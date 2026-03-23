@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MAA DIGITAL Computer Education</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {margin:0; font-family: 'Segoe UI', Arial, sans-serif; background: #f8fafc;}
+    header {display:flex; align-items:center; justify-content:space-between; background:white; box-shadow:0 2px 12px rgba(34,95,204,0.04); padding:14px 18px;}
+    .logo-sec {display:flex; align-items:center;}
+    .logo {width:40px; height:40px; margin-right:10px;}
+    .nav {font-weight:500;}
+    .nav a {margin-left:12px; text-decoration:none; color:#175ee7; font-size:1em;}
+    .menu-btn {display:none;}
+    @media (max-width:650px) {.nav{display:none;} .menu-btn{display:block; background: none; border: none; font-size:2em; color: #175ee7;}}
+    h1, h2, h3 {margin-bottom:10px;}
+    h1 {font-size:2em; color:#215bbf;}
+    .section {max-width:940px; margin:40px auto 0 auto; background:#fff; border-radius:13px; box-shadow:0 2px 8px rgba(34,95,204,0.04); padding:24px;}
+    @media (max-width:760px){.section{padding:16px;}}
+    .hero {background:#eaf2fd; padding:34px 15px 25px 15px; text-align:center;}
+    .hero .tagline {display:inline-block; background:#e3efff; color:#175ee7; padding:5px 18px; border-radius:20px; margin-bottom:10px; font-weight:500;}
+    .hero h1 {font-size:2.2em;}
+    .hero p {max-width:520px; margin:0 auto;}
+    .hero .stats {display:flex; gap:27px; justify-content:center; margin:30px 0 12px 0;}
+    .stat .big {font-size:1.18em; color:#215bbf; font-weight:bold;}
+    .stat .small {font-size:0.98em; color:#5c6e87;}
+    @media (max-width:600px){.hero .stats{flex-direction:column; gap:11px; align-items:center;}}
+
+    .features {display:grid; grid-template-columns:1fr 1fr; gap:15px;}
+    .feature-card {background: #f4f9ff; border-radius:9px; padding:14px 12px; border: 1px solid #dbe9fc;}
+    .feature-title {font-weight:550; color:#1a58ba;}
+    @media (max-width:650px){.features{grid-template-columns:1fr;}}
+
+    .courses {display:grid; grid-template-columns:1fr 1fr; gap:15px;}
+    .course-card {background: #f6f7fa; border-radius:8px; padding:16px 12px; box-shadow:0 1px 5px rgba(34,95,204,0.05);}
+    .course-title {font-weight:bold; color:#1448AB; font-size:1.13em;}
+    .badge {display:inline-block; background:#eef2fc; color:#2266c1; padding:2px 10px; border-radius:7px; margin-left:7px; font-size:0.96em;}
+    .fee {color:#17a267; font-weight:500;}
+    @media (max-width:700px){.courses{grid-template-columns:1fr;}}
+
+    .values, .facilities {display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+    .value-card, .facility-card {background:#f4f9ff; border-radius:9px; padding:16px; border:1px solid #dbe8fc;}
+    .value-title, .facility-title {font-weight:550; color:#1a58ba;}
+    @media (max-width:700px){.values, .facilities{grid-template-columns:1fr;}}
+
+    .steps-list {margin:0; padding:0;}
+    .step-item {display:flex; align-items:flex-start; margin-bottom:12px;}
+    .step-num {background:#215bbf; color:#fff; border-radius:50%; width:33px; height:33px; display:flex; align-items:center; justify-content:center; margin-right:12px; font-weight:bold;}
+    .required-docs {background:#f8fafc; border-radius:8px; padding:12px 14px; margin-bottom:18px;}
+    .required-docs ul {padding-left:21px;}
+    .doc-tick {color: #009C34; font-size:1.1em;}
+
+    .batch-card {background:#f0f6ff; border-radius:8px; padding:13px; margin-bottom:8px; border:1px solid #cbe2f7;}
+    .batch-title {font-weight:600; color:#2266c1;}
+    .blue-cta {background:#1769ed; color:#fff; border:none; border-radius:6px; padding:14px 0; width:100%; font-size:1.08em; font-weight:bold; cursor:pointer; margin-top:13px;}
+    .outline-cta {background:transparent; color:#1769ed; border:2px solid #1769ed; border-radius:6px; padding:12px 0; width:100%; font-size:1.07em; margin-top:7px;}
+    .testimonials {margin-top:20px;}
+    .testimonial-card {background: #f7faff; border-radius: 9px; padding: 13px 12px; margin-bottom:14px;}
+    .testimonial-card .name {font-weight:bold; color:#2e50a5;}
+    .testimonial-card .course {color:#0481fb; font-size:0.97em;}
+    .testimonial-card .review {font-style:italic; color:#555;}
+    .enquiry-form {background:#f8fafc; border-radius:10px; padding:13px 14px; margin-top:14px;}
+    .enquiry-form label {display:block; margin-bottom:2px; font-weight:500;}
+    .enquiry-form input, .enquiry-form textarea {width:100%; padding:8px; border-radius:6px; border:1px solid #bfd6f9; margin-bottom:11px; font-size:1em;}
+    .enquiry-form textarea {resize:vertical; min-height:42px;}
+    .enquiry-form button {background:#225fcc; color:#fff; border:none; padding:12px 20px; border-radius:7px; font-size:1em;}
+
+    .map-section {margin-top:22px;}
+    .map-box {margin:0 auto 16px auto; border-radius:13px; overflow:hidden; width:97%;max-width:440px; box-shadow:0 1px 8px rgba(34,95,204,0.07);}
+    .about-photo {width:100%; max-width:540px; border-radius:14px; margin:18px auto;}
+    .footer {background:#192238; color:#fff; text-align:left; padding:24px 7vw;}
+    .footer-logo {display:flex; align-items:center; margin-bottom:8px;}
+    .footer-logo .logo {width:31px; height:31px;margin-right:8px;}
+    .footer .links {margin:0; padding:0; list-style:none;}
+    .footer .links li{margin-bottom:3px;}
+    @media (max-width:650px){.footer{font-size:0.95em;padding:20px 2vw;} .about-photo{max-width:100%;}}
+  </style>
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="logo-sec">
+    <img src="https://img.icons8.com/ios-filled/50/225fcc/graduate-cap.png" alt="Logo" class="logo"/>
+    <div>
+      <div style="font-size:1.1em; font-weight:bold; color:#1448AB;">MAA DIGITAL</div>
+      <div style="font-size:0.97em;color:#7c8aa6;">Computer Education</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#courses">Courses</a>
+    <a href="#mission">Mission & Vision</a>
+    <a href="#values">Values</a>
+    <a href="#facilities">Facilities</a>
+    <a href="#admission">Admission</a>
+    <a href="#batch">Batch Timings</a>
+    <a href="#enquiry">Enquiry</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="menu-btn">&#9776;</button>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <span class="tagline">✨ Your Career Growth Partner</span>
+  <h1>Learn Computer Skills for a <span style="color:#1556ee;">Bright Future</span></h1>
+  <p>Transform your career with industry-relevant computer courses. Expert trainers, practical training, and placement assistance to ensure your success.</p>
+  <div class="stats">
+    <div class="stat"><div class="big">10+ </div> <div class="small">Years Experience</div></div>
+    <div class="stat"><div class="big">5000+ </div> <div class="small">Students Trained</div></div>
+    <div class="stat"><div class="big">15+ </div> <div class="small">Courses Offered</div></div>
+    <div class="stat"><div class="big">95% </div> <div class="small">Success Rate</div></div>
+  </div>
+</section>
+
+<!-- Features/Highlights -->
+<section class="section features" id="features">
+  <div class="feature-card"><div class="feature-title">Expert Faculty</div><div>Learn from experienced professionals with industry expertise.</div></div>
+  <div class="feature-card"><div class="feature-title">Hands-on Training</div><div>Practical sessions with real-world projects and assignments.</div></div>
+  <div class="feature-card"><div class="feature-title">Job Assistance</div><div>Placement support and career guidance after course completion.</div></div>
+  <div class="feature-card"><div class="feature-title">Flexible Timing</div><div>Morning and evening batches available for your convenience.</div></div>
+  <div class="feature-card"><div class="feature-title">Certified Courses</div><div>Receive recognized certificates upon successful completion.</div></div>
+  <div class="feature-card"><div class="feature-title">Modern Lab</div><div>Well-equipped computer lab with latest software and tools.</div></div>
+</section>
+
+<!-- About Us -->
+<section class="section" id="about">
+  <h2>About Us</h2>
+  <p>Building careers through quality computer education since over a decade.</p>
+  <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?fit=crop&w=960&q=80" alt="Classroom Scene" class="about-photo">
+  <h3>Our Story</h3>
+  <p>
+    MAA Digital Computer Education was established with a vision to provide quality computer education to students from all backgrounds. Over the years, we have trained thousands of students who are now successfully working in various IT companies and organizations.
+    <br><br>
+    Our commitment to excellence, practical approach to teaching, and dedication to student success has made us one of the most trusted computer education institutes in the region.
+    <br><br>
+    We continuously update our curriculum to match industry standards and ensure our students are well-prepared for the challenges of the modern workplace.
+  </p>
+</section>
+
+<!-- Mission & Vision -->
+<section class="section" id="mission">
+  <h2>Our Mission & Vision</h2>
+  <div class="values">
+    <div class="value-card">
+      <div class="value-title">Our Mission</div>
+      To empower individuals with comprehensive computer education and practical skills that enable them to achieve their career goals and contribute meaningfully to the digital economy.
+    </div>
+    <div class="value-card">
+      <div class="value-title">Our Vision</div>
+      To be the leading computer education institute known for quality training, student success, and creating skilled professionals who excel in their chosen fields.
+    </div>
+  </div>
+</section>
+
+<!-- Core Values -->
+<section class="section" id="values">
+  <h2>Our Core Values</h2>
+  <div class="values">
+    <div class="value-card"><div class="value-title">Excellence</div>We strive for excellence in everything we do, from teaching to student support.</div>
+    <div class="value-card"><div class="value-title">Student-Centric</div>Our students' success is our priority, and we go the extra mile to help them achieve their goals.</div>
+    <div class="value-card"><div class="value-title">Practical Learning</div>We believe in hands-on training that prepares students for real-world challenges.</div>
+  </div>
+</section>
+
+<!-- Facilities -->
+<section class="section" id="facilities">
+  <h2>Our Facilities</h2>
+  <div class="facilities">
+    <div class="facility-card">
+      <div class="facility-title">Modern Computer Lab</div>
+      Well-equipped computer lab with latest hardware and software for practical training.
+    </div>
+    <div class="facility-card">
+      <div class="facility-title">Study Material</div>
+      Comprehensive study materials and resources for each course.
+    </div>
+    <div class="facility-card">
+      <div class="facility-title">High-Speed Internet</div>
+      Fast and reliable internet connectivity for online learning and research.
+    </div>
+    <div class="facility-card">
+      <div class="facility-title">Expert Trainers</div>
+      Experienced faculty members dedicated to your learning success.
+    </div>
+  </div>
+</section>
+
+<!-- Courses -->
+<section class="section" id="courses">
+  <h2>Our Courses</h2>
+  <div class="courses">
+    <div class="course-card">
+      <div class="course-title">Basic Computer Course <span class="badge">3 Months</span></div>
+      <div>Complete foundation course for computer beginners.</div>
+      <div class="fee">₹3,000</div>
+    </div>
+    <div class="course-card">
+      <div class="course-title">Advanced Excel & Tally <span class="badge">4 Months</span></div>
+      <div>Master accounting software and advanced spreadsheet skills.</div>
+      <div class="fee">₹5,000</div>
+    </div>
+    <div class="course-card">
+      <div class="course-title">Web Development <span class="badge">6 Months</span></div>
+      <div>Learn to build modern websites and web applications.</div>
+      <div class="fee">₹12,000</div>
+    </div>
+    <div class="course-card">
+      <div class="course-title">Graphic Design <span class="badge">5 Months</span></div>
+      <div>Create stunning visuals and professional designs.</div>
+      <div class="fee">₹8,000</div>
+    </div>
+    <div class="course-card">
+      <div class="course-title">Digital Marketing <span class="badge">4 Months</span></div>
+      <div>Master online marketing and social media strategies.</div>
+      <div class="fee">₹10,000</div>
+    </div>
+    <div class="course-card">
+      <div class="course-title">Programming with Python <span class="badge">5 Months</span></div>
+      <div>Learn one of the most powerful programming languages.</div>
+      <div class="fee">₹15,000</div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section testimonials">
+  <h2>What Our Students Say</h2>
+  <div class="testimonial-card">
+    <div class="name">Priya Sharma</div>
+    <div class="course">Web Development</div>
+    <div class="review">"Best computer institute in the area! The trainers are very supportive and the course content is excellent."</div>
+  </div>
+  <div class="testimonial-card">
+    <div class="name">Rahul Verma</div>
+    <div class="course">Tally & Excel</div>
+    <div class="review">"Got a job in an accounting firm after completing my Tally course. Thank you MAA Digital for the training!"</div>
+  </div>
+  <div class="testimonial-card">
+    <div class="name">Anjali Singh</div>
+    <div class="course">Graphic Design</div>
+    <div class="review">"The practical approach to teaching made learning design so easy. Highly recommend for creative courses!"</div>
+  </div>
+</section>
+
+<!-- Admission Process -->
+<section class="section" id="admission">
+  <h2>Admission Process</h2>
+  <div class="steps-list">
+    <div class="step-item"><div class="step-num">1</div><div>Visit our institute and meet our counselor to discuss your course options.</div></div>
+    <div class="step-item"><div class="step-num">2</div><div>Choose your desired course with expert guidance.</div></div>
+    <div class="step-item"><div class="step-num">3</div><div>Submit documents: ID proof, educational certificates, and passport size photographs.</div></div>
+    <div class="step-item"><div class="step-num">4</div><div>Pay the course fees. Flexible installment options available.</div></div>
+    <div class="step-item"><div class="step-num">5</div><div>Join your batch and begin your learning journey with expert trainers.</div></div>
+  </div>
+  <div class="required-docs">
+    <h3>Required Documents</h3>
+    <p>Please bring the following documents at the time of admission:</p>
+    <ul>
+      <li><span class="doc-tick">&#10003;</span> Recent passport size photographs (2 copies)</li>
+      <li><span class="doc-tick">&#10003;</span> ID Proof (Aadhar Card / Voter ID / Driving License)</li>
+      <li><span class="doc-tick">&#10003;</span> Educational Certificates (10th / 12th mark sheet)</li>
+      <li><span class="doc-tick">&#10003;</span> Address Proof</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Batch Timings -->
+<section class="section" id="batch">
+  <h2>Available Batch Timings</h2>
+  <p>Choose a convenient time slot that fits your schedule.</p>
+  <div class="batch-card">
+    <div class="batch-title">Morning Batch</div>
+    <div><b>8:00 AM – 10:00 AM</b> (Monday to Saturday)</div>
+  </div>
+  <div class="batch-card">
+    <div class="batch-title">Day Batch</div>
+    <div><b>11:00 AM – 1:00 PM</b> (Monday to Saturday)</div>
+  </div>
+  <div class="batch-card">
+    <div class="batch-title">Evening Batch</div>
+    <div><b>5:00 PM – 7:00 PM</b> (Monday to Saturday)</div>
+  </div>
+  <div class="batch-card">
+    <div class="batch-title">Weekend Batch</div>
+    <div><b>10:00 AM – 4:00 PM</b> (Saturday & Sunday)</div>
+  </div>
+  <div style="margin:24px 0;">
+    <button class="blue-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Us Now</button>
+    <button class="outline-cta" onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'})">View Courses</button>
+  </div>
+</section>
+
+<!-- Enquiry Form & Map -->
+<section class="section" id="enquiry">
+  <h2>Enquiry Form</h2>
+  <form class="enquiry-form">
+    <label for="name">Full Name *</label>
+    <input type="text" id="name" required>
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" required>
+    <label for="phone">Phone Number *</label>
+    <input type="text" id="phone" required>
+    <label for="course">Interested Course</label>
+    <input type="text" id="course">
+    <label for="msg">Message</label>
+    <textarea id="msg" rows="3"></textarea>
+    <button type="submit">Submit Enquiry</button>
+  </form>
+  <div class="map-section" id="contact">
+    <h3 style="margin-top:32px;">Find Us on Map</h3>
+    <div class="map-box">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.83918837844!2d77.00997251052087!3d28.652008216757492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd1e65a9b461%3A0xdeb6ae6a453d2ddb!2sDelhi!5e0!3m2!1sen!2sin!4v1648881700987!5m2!1sen!2sin"
+        width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-logo">
+    <img src="https://img.icons8.com/ios-filled/50/225fcc/graduate-cap.png" alt="Logo" class="logo"/>
+    <div>
+      <div style="font-size:1.05em; font-weight:bold;">MAA DIGITAL</div>
+      <div style="font-size:0.97em;color:#aac1ea;">Computer Education</div>
+    </div>
+  </div>
+  <div>Empowering students with quality computer education and practical skills for a successful career in IT industry.</div>
+  <div style="margin-top:10px;">
+    <b>Quick Links</b>
+    <ul class="links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#admission">Admission Process</a></li>
+      <li><a href="#batch">Batch Timings</a></li>
+      <li><a href="#enquiry">Enquiry</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div style="margin-top:10px;">
+    <b>Contact Us</b><br/>
+    123 Education Street, Near City Center, Your City - 123456<br>
+    +91 98765 43210<br>
+    info@maadigital.com
+  </div>
+  <div style="margin-top:12px; color:#dde4f7; font-size:0.98em;">
+    &copy; 2026 MAA DIGITAL Computer Education. All rights reserved.
+  </div>
+</footer>
+</body>
+      </html>
